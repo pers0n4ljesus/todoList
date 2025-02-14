@@ -1,4 +1,7 @@
-let todoList = [];
+const storedData = localStorage.getItem('todoList');
+let todoList =  storedData ? JSON.parse(storedData) : [];
+
+renderTodoList();
 
 function addTodoList() {
   const inputElement = document.querySelector('.js-todo-input');
@@ -7,6 +10,7 @@ function addTodoList() {
   const dueDate = dueDateElement.value;
   const todoObject = {name, dueDate}
   todoList.push(todoObject);
+  localStorage.setItem("todoList", JSON.stringify(todoList));
   console.log(todoList);
   renderTodoList();
   inputElement.value = '';
@@ -29,5 +33,6 @@ function renderTodoList() {
 
 function deleteTodo(i) {
   todoList.pop(i, 0);
+  localStorage.setItem("todoList", JSON.stringify(todoList));
   renderTodoList();
 }
