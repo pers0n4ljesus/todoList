@@ -18,15 +18,15 @@ function addTodoList() {
 
 function renderTodoList() {
   let accumulatorTodo = '';
-  for( let i=0; i<todoList.length; i++) {
+  todoList.forEach(function (todoObject, index) {
     accumulatorTodo += `
       <div class="js-todo-grid">
-        <p>${todoList[i].name}</p>
-        <p>${todoList[i].dueDate}</p>
+        <p>${todoList[index].name}</p>
+        <p>${todoList[index].dueDate}</p>
         <button class="js-delete-button" onclick=deleteTodo();>Delete</button>
       </div>
     `;
-  }
+  });
   document.querySelector('.js-todo-list')
   .innerHTML = accumulatorTodo;
 }
